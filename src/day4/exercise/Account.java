@@ -1,16 +1,16 @@
 package day4.exercise;
 
 public class Account {
-  private String name;
+  final private String name;
   private long balance;
-  private String accountNo; //숫자 다섯자리
-  private String pw; // 숫자 네자리
+  final private String accountNo; //숫자 다섯자리
+  final private String pw; // 숫자 네자리
 
-  void deposit(long amount) {
+  public void deposit(long amount) {
     balance += amount;
   }
 
-  void withdraw(long amount) {
+  public void withdraw(long amount) {
     if(amount>balance) {
       System.out.println("출금오류");
     }
@@ -19,8 +19,8 @@ public class Account {
     }
   }
 
-  void search() {
-    System.out.printf("현재 계좌의 잔액은 %d입니다..\n", balance);
+  public void search() {
+    System.out.printf("현재 계좌의 잔액은 %d입니다.\n\n", balance);
   }
 
   public String getName() {
@@ -47,3 +47,31 @@ public class Account {
   }
 
 }
+/*
+private String accnum;
+private String pw;
+private int balance;
+private String name;
+int money;
+
+boolean check(String accnum, String pw) {
+
+}
+void withdraw(int money) {
+  if(money>balance) {
+    System.out.println("출금오류");
+  }
+  else {
+    balance -= money;
+  }
+}
+
+void deposit(int money) {
+  //계좌번호를 입력하세요 pw
+}
+
+void Balance(){
+
+}
+
+*/
