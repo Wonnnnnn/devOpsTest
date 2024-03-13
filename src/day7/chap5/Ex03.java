@@ -7,13 +7,12 @@ public class Ex03 {
     Scanner in = new Scanner(System.in);
     String url = "";
 
-    while(true) {
+    do {
       System.out.print("URL을 입력하시오 : ");
       url = in.nextLine();
-      if (url.equals("bye")) break;
       containCom(url);
       containJava(url);
-    }
+    } while(!(url.equalsIgnoreCase("bye")));
 
   }
 
