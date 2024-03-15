@@ -11,9 +11,12 @@ public class PolyDemo {
     people[1] = s;
     people[2] = e;
 
+    people[1] = (Student)people[1];
+
     check(p);
     check(s);
     check(e);
+    people[1].whoami();
 
   }
 
