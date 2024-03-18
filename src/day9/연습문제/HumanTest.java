@@ -1,8 +1,9 @@
 package day9.연습문제;
 
 public class HumanTest {
-  public static void main(String[] args) {
+  public static void main(String[] args){
 
+    Human.echo(); // static
     Student s = new Student(20);
     s.print();
     s.eat();
