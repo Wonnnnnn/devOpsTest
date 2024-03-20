@@ -5,7 +5,6 @@ public class ConstructorRefDemo {
     NewArray<Integer> i;
     i = x -> new Integer[x];
 
-    i =
 
     Integer[] array = i.getArray(3);
 

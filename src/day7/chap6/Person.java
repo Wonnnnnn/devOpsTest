@@ -1,6 +1,6 @@
 package day7.chap6;
 
-public class Person {
+class Person {
   String name = "사람";
 
   void whoami() {
