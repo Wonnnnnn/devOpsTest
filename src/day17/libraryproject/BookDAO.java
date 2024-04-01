@@ -104,6 +104,64 @@ public List<Book> bookListByPublisher(String publisher) throws SQLException{
     return -1;
   }
 
+  public void bookUpdate(Book book, String status) throws SQLException{ // ==> enum
+    conn = LibraryDBConnection.getConnection() ;
+    String sql = "update books set status = ? where id = ? and lib_id = ?;";
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setString(1, status);
+    ps.setInt(2,book.getId());
+    ps.setInt(3,book.getLibId());
+    if(ps.executeUpdate() == 1) {
+      System.out.println("수정 성공");
+    } else {
+      System.out.println("수정 실패");
+    }
+  }
+
+  public void bookDelete(Book book) throws SQLException {
+    conn = LibraryDBConnection.getConnection() ;
+    String sql = "delete from books where id = ? and lib_id = ?;";
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setInt(1,book.getId());
+    ps.setInt(2,book.getLibId());
+    if(ps.executeUpdate() == 1) {
+      System.out.println("삭제 성공");
+    } else {
+      System.out.println("삭제 실패");
+    }
+  }
+
+  boolean bookCheck(Book book) throws SQLException{
+    conn = LibraryDBConnection.getConnection() ;
+    String sql = "select status from books where id = ? and lib_id = ?;";
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setInt(1,book.getId());
+    ps.setInt(2,book.getLibId());
+    ResultSet rs = ps.executeQuery();
+    if(rs != null && rs.next()) {
+      String status = rs.getString(1);
+      if (status.equals("대출중") || status.equals("대출가능"))
+        return false;
+      else if (status.equals("분실") || status.equals("파손") || status.equals("노후"))
+        return true;
+    }
+    return false;   /// status 를 return 하는 방법으로 변경하는 것이 좋을지 확인 필요!!!
+  }
+
+  public boolean isbnDuplicateCheck(String isbn) throws SQLException{
+    conn = LibraryDBConnection.getConnection() ;
+    String sql = "select isbn from books where isbn = ?;";
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps.setString(1,isbn);
+    ResultSet rs = ps.executeQuery();
+    if(rs == null) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 
 
 }

@@ -46,4 +46,41 @@ public class User {
   public String getPsssword() {
     return psssword;
   }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public void setLibId(int libId) {
+    this.libId = libId;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
+  public void setPoint(int point) {
+    this.point = point;
+  }
+
+  public void setPsssword(String psssword) {
+    this.psssword = psssword;
+  }
+
+  @Override
+  public String toString() {
+    return "User[" +
+        "아이디=" + id +
+        ", 도서관 번호=" + libId +
+        ", 이름='" + username + '\'' +
+        ']';
+  }
 }

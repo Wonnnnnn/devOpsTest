@@ -60,4 +60,15 @@ public class Checkout {
   public Date getRenewReturnDate() {
     return renewReturnDate;
   }
+
+  @Override
+  public String toString() {
+    return "Checkout{" +
+        "libId=" + libId +
+        ", bookID=" + bookID +
+        ", userid=" + userid +
+        ", checkoutDate=" + checkoutDate +
+        ", tobeReturnDate=" + tobeReturnDate +
+        '}';
+  }
 }
